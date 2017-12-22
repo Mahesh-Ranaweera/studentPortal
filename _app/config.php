@@ -4,16 +4,12 @@
      */
     function config($key = ''){
         $config = [
-            'site' => 'Site Name',
-            'adminportal' => '../_admin',
-            'userportal' => '../_dashb',
-            'menu' => [
-                'home' => 'HOME',
-                'signup' => 'SIGNUP',
-                'signin' => 'SIGNIN',
-                'careers'=> 'CAREERS',
-                'about' => 'ABOUT',
-            ]
+            'site_header' => 'A/L Physics e Learn',
+            'site' => 'Advanced Level Physics e learning',
+            'nav_home' => '/',
+            'nav_signup' => '/studentPortal/signup',
+            'nav_career' => '/studentPortal/careers',
+            'nav_about' => '/studentPortal/about',
         ];
 
         return isset($config[$key]) ? $config[$key] : null;

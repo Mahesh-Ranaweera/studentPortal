@@ -118,6 +118,12 @@ a {
   display: none;
 }
 
+.uk-highlight{
+  padding: 5px;
+  box-sizing: border-box;
+  background-color: #f8f8f8;
+}
+
 /* scroll bar =========================*/
 
 ::-webkit-scrollbar {
@@ -155,4 +161,8 @@ a {
 
 :-moz-placeholder {
   color: #34495e;
+}
+
+.web-description-txt{
+  text-justify: newspaper;
 }
