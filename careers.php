@@ -1,5 +1,5 @@
 <?php
-    include './_app/render.php';
+    include './_app/dependency.php';
     web_header(config('site_header'));
 ?>
 
@@ -78,7 +78,7 @@
                                 </div>
 
                                 <div class='uk-margin'>
-                                    <button class='uk-button uk-button-primary' type='submit'>SUBMIT</button>
+                                    <button class='uk-button uk-button-primary' name='submitCareer' type='submit'>SUBMIT</button>
                                 </div>
                             </form>
                         </div>

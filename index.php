@@ -1,5 +1,5 @@
 <?php
-    include './_app/render.php';
+    include './_app/dependency.php';
     web_header(config('site_header'));
 ?>
 

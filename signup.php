@@ -1,5 +1,5 @@
 <?php
-    include './_app/render.php';
+    include './_app/dependency.php';
     web_header(config('site_header'));
 ?>
 
@@ -40,11 +40,11 @@
                             <form class="uk-grid-small" uk-grid>
                                 <div class="uk-width-1-2@s">
                                     <label for="">First Name:</label>
-                                    <input class="uk-input" name='first_name' type="text" placeholder="">
+                                    <input class="uk-input" name='strFname' type="text" placeholder="">
                                 </div>
                                 <div class="uk-width-1-2@s">
                                     <label for="">Last Name:</label>
-                                    <input class="uk-input" name='last_name' type="text" placeholder="">
+                                    <input class="uk-input" name='strLname' type="text" placeholder="">
                                 </div>
                                 <div class="uk-width-1-1">
                                     <label for="">Parents Name:</label>
@@ -68,7 +68,7 @@
                                 </div>
 
                                 <div class='uk-margin'>
-                                    <button class='uk-button uk-button-primary' type='submit'>SIGN UP</button>
+                                    <button class='uk-button uk-button-primary' name='submitSignup' type='submit'>SIGN UP</button>
                                 </div>
                             </form>
                         </div>
