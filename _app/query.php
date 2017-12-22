@@ -13,16 +13,17 @@
         $field = $_POST['strField'];
         $contact = $_POST['strContact'];
 
-        echo $fname.$lname.$parent.$school.$district.$field.$contact;
+        $sql = "INSERT INTO `USERS`(`fname`, `lname`, `parent`, `school`, `district`, `field`, `contact`) VALUES ('$fname', '$lname', '$parent', '$school', '$district', '$field', '$contact')";
+        
+        //echo $sql;
 
-        $sql = 'INSERT INTO `USERS`(`fname`, `lname`, `parent`, `school`, `district`, `field`, `contact`)
-                VALUES ($fname, $lname, $parent, $school, $district, $field, $field, $contact)';
 
         if($conn->query($sql) === TRUE){
             echo "DONE";
         }else{
             echo "FAILED";
         }
+        
         
      }
     

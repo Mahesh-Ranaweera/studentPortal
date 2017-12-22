@@ -19,14 +19,14 @@
 
     if($conn->query($sql) === TRUE){
         $sql2 = 'CREATE TABLE `USERS` (
-                    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-                    fname VARCHAR(30) NOT NULL,
+                    id INTEGER PRIMARY KEY AUTO_INCREMENT,
+                    fname VARCHAR(30),
                     lname VARCHAR(30) NOT NULL,
-                    parent VARCHAR(100) NOT NULL,
-                    school VARCHAR(100) NOT NULL,
-                    district VARCHAR(60) NOT NULL,
-                    field VARCHAR(60) NOT NULL,
-                    contact VARCHAR(60) NOT NULL,
+                    parent VARCHAR(100),
+                    school VARCHAR(100),
+                    district VARCHAR(60),
+                    field VARCHAR(60),
+                    contact VARCHAR(60),
                     reg_date TIMESTAMP
                 );';
 
@@ -35,4 +35,4 @@
         }
     }
 
-    $conn->close();
+    //$conn->close();
