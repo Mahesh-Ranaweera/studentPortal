@@ -28,12 +28,17 @@
                     field VARCHAR(60),
                     contact VARCHAR(60),
                     passwd VARCHAR(30),
+                    accepted BOOLEAN,
                     reg_date TIMESTAMP
                 );';
 
-        if($conn->query($sql2) === TRUE){
-            //echo "DONE";
-        }
+        $sql2 .= 'CREATE TABLE `admin`(
+                    email VARCHAR(60) PRIMARY KEY,
+                    admin_type INT(10),
+                    passwd VARCHAR(30)
+                );';
+
+        $res = mysqli_multi_query($conn, $sql2);
     }
 
     //$conn->close();

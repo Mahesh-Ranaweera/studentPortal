@@ -16,13 +16,12 @@
 
         $passwd = password_hash(codegen(), PASSWORD_BCRYPT);
 
+        //query
         $sql = "INSERT INTO `users`(`email`, `fname`, `lname`, `parent`, `school`, `district`, `field`, `contact`, `passwd`) 
                 VALUES ('$email', '$fname', '$lname', '$parent', '$school', '$district', '$field', '$contact', '$passwd')";
-        
-        //echo $sql;
 
         $checkdb = "SELECT `email` FROM `users` WHERE `email`='".$email."'";
-        //check wether users is already registered
+        //check whether users is already registered
         $res = $conn->query($checkdb);
         $row = mysqli_fetch_assoc($res);
 
@@ -33,20 +32,14 @@
                 #echo "DONE";
                 $notify['type'] = 'good';
                 $notify['msg'] = 'Successfully Registered';
-
-                //echo $notify['type'];
             }else{
                 $notify['type'] = 'error';
                 $notify['msg'] = 'Something Went Wrong, Try Again';
-
-                //echo $notify['type'];
             }
         }else{
             #echo 'USER ALREADY REGISTERED';
             $notify['type'] = 'good';
             $notify['msg'] = 'Already Registered';
-
-            //echo $notify['type'];
         }
      }
     
@@ -57,4 +50,12 @@
         $passw = $_POST['admin_password'];
 
         
+     }
+
+     //admin register
+     if(isset($_POST['btnAdmin'])){
+         $email = $_POST['email'];
+         $passw = $_POST['passw'];
+
+         
      }
