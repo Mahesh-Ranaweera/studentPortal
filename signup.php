@@ -38,33 +38,37 @@
                         
                         <div class='uk-margin'>
                             <form class='uk-grid-small' method='POST' uk-grid>
+                                <div class='uk-width-1-1'>
+                                    <label for=''>Email:</label>
+                                    <input class='uk-input' name='strEmail' type='email' placeholder='' require>
+                                </div>
                                 <div class='uk-width-1-2@s'>
                                     <label for=''>First Name:</label>
-                                    <input class='uk-input' name='strFname' type='text' placeholder=''>
+                                    <input class='uk-input' name='strFname' type='text' placeholder='' require>
                                 </div>
                                 <div class='uk-width-1-2@s'>
                                     <label for=''>Last Name:</label>
-                                    <input class='uk-input' name='strLname' type='text' placeholder=''>
+                                    <input class='uk-input' name='strLname' type='text' placeholder='' require>
                                 </div>
                                 <div class='uk-width-1-1'>
                                     <label for=''>Parents Name:</label>
-                                    <input class='uk-input' name='strParent' type='text' placeholder=''>
+                                    <input class='uk-input' name='strParent' type='text' placeholder='' require>
                                 </div>
                                 <div class='uk-width-1-1'>
                                     <label for=''>School:</label>
-                                    <input class='uk-input' name='strSchool' type='text' placeholder=''>
+                                    <input class='uk-input' name='strSchool' type='text' placeholder='' require>
                                 </div>
                                 <div class='uk-width-1-1'>
                                     <label for=''>District:</label>
-                                    <input class='uk-input' name='strDistrict' type='text' placeholder=''>
+                                    <input class='uk-input' name='strDistrict' type='text' placeholder='' require>
                                 </div>
                                 <div class='uk-width-1-1'>
                                     <label for=''>Field you following:</label>
-                                    <input class='uk-input' name='strField' type='text' placeholder=''>
+                                    <input class='uk-input' name='strField' type='text' placeholder='' require>
                                 </div>
                                 <div class='uk-width-1-1'>
                                     <label for=''>Contact Information:</label>
-                                    <input class='uk-input' name='strContact' type='text' placeholder=''>
+                                    <input class='uk-input' name='strContact' type='text' placeholder='' require>
                                 </div>
 
                                 <div class='uk-margin'>

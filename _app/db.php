@@ -18,8 +18,8 @@
     $sql = 'CREATE DATABASE IF NOT EXISTS stud_portal';
 
     if($conn->query($sql) === TRUE){
-        $sql2 = 'CREATE TABLE `USERS` (
-                    id INTEGER PRIMARY KEY AUTO_INCREMENT,
+        $sql2 = 'CREATE TABLE `users` (
+                    email VARCHAR(60) PRIMARY KEY,
                     fname VARCHAR(30),
                     lname VARCHAR(30) NOT NULL,
                     parent VARCHAR(100),
@@ -27,6 +27,7 @@
                     district VARCHAR(60),
                     field VARCHAR(60),
                     contact VARCHAR(60),
+                    passwd VARCHAR(30),
                     reg_date TIMESTAMP
                 );';
 

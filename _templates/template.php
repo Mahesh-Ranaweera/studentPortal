@@ -18,5 +18,15 @@
     } 
 
     function web_footer(){
-        echo "</html>";
+        echo "
+        <script>
+            function success(){
+                UIkit.notification({message: 'Successfully Registered', status: 'success'})
+            }
+
+            function failed(){
+                UIkit.notification({message: 'Fail to Register', status: 'warning'})
+            }
+        </script>
+        </html>";
     }
