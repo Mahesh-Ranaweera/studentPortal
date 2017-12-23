@@ -14,19 +14,9 @@
                 <script src='./_public/uikit/js/uikit-icons.min.js'></script>
         
                 <!--favicon-->
-                </head>";
+                </head><body>";
     } 
 
     function web_footer(){
-        echo "
-        <script>
-            function success(){
-                UIkit.notification({message: 'Successfully Registered', status: 'success'})
-            }
-
-            function failed(){
-                UIkit.notification({message: 'Fail to Register', status: 'warning'})
-            }
-        </script>
-        </html>";
+        echo "</body></html>";
     }

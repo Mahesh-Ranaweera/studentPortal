@@ -14,7 +14,7 @@
         $field = $_POST['strField'];
         $contact = $_POST['strContact'];
 
-        $passwd = codegen();
+        $passwd = password_hash(codegen(), PASSWORD_BCRYPT);
 
         $sql = "INSERT INTO `users`(`email`, `fname`, `lname`, `parent`, `school`, `district`, `field`, `contact`, `passwd`) 
                 VALUES ('$email', '$fname', '$lname', '$parent', '$school', '$district', '$field', '$contact', '$passwd')";
@@ -27,16 +27,26 @@
         $row = mysqli_fetch_assoc($res);
 
         if($res->num_rows <= 0){
-            echo 'USER NOT FOUND';
+            #echo 'USER NOT FOUND';
 
             if($conn->query($sql) === TRUE){
-                echo "DONE";
-                printf("<script>success()</script>");
+                #echo "DONE";
+                $notify['type'] = 'good';
+                $notify['msg'] = 'Successfully Registered';
+
+                //echo $notify['type'];
             }else{
-                printf("<script>failed()</script>");
+                $notify['type'] = 'error';
+                $notify['msg'] = 'Something Went Wrong, Try Again';
+
+                //echo $notify['type'];
             }
         }else{
-            echo 'USER ALREADY REGISTERED';
+            #echo 'USER ALREADY REGISTERED';
+            $notify['type'] = 'good';
+            $notify['msg'] = 'Already Registered';
+
+            //echo $notify['type'];
         }
      }
     
