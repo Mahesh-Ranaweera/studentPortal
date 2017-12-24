@@ -3,30 +3,32 @@
      * Admin query
      */
 
-    //Login into admin panel
-    if(isset($_POST['btnAdminLogin'])){
-        $email = $_POST['admin_email'];
-        $passw = $_POST['admin_password'];
+    //update status of the student
+    if(isset($_POST['btnStateAccept'])){
+        $email = $_POST['stud_email'];
 
-        $sql = "SELECT `email`, `passwd` FROM `admin` WHERE `email`='".$email."'";
+        $sql = "UPDATE `users` SET `accepted`=TRUE WHERE `email`='".$email."'";
 
-        $res = $conn->query($sql);
-        $row = mysqli_fetch_assoc($res);
-
-        if($res->num_rows<=0){
-            echo "USER NOT FOUND";
+        if($conn->query($sql) === TRUE){
+            echo 'UPDATED';
+            header('Location: ../_admin/stud_registeration?msg=added');
         }else{
-            if(password_verify($passw ,$row['passwd'])){
-                session_start();
-
-                $user_data = array(
-                    'email' => $row['email'],
-                    'type' => $row['admin_type']
-                );
-
-                $_SESSION['udata'] = $user_data;
-                
-                header('Location: ./_admin/admin');
-            }
+            echo 'UDPATE FAILED';
+            header('Location: ../_admin/stud_registeration?msg=error');
         }
-     }
+    }
+
+    //update status of the student
+    if(isset($_POST['btnStateDeny'])){
+        $email = $_POST['stud_email'];
+
+        $sql = "UPDATE `users` SET `accepted`=FALSE WHERE `email`='".$email."'";
+
+        if($conn->query($sql) === TRUE){
+            echo 'UPDATED';
+            header('Location: ../_admin/stud_registeration?msg=added');
+        }else{
+            echo 'UDPATE FAILED';
+            header('Location: ../_admin/stud_registeration?msg=error');
+        }
+    }

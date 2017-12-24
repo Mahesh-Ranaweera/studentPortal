@@ -52,12 +52,26 @@
                                     }else{
                                         while($row=mysqli_fetch_array($res)){
                                             $stud_name = $row['fname'].' '.$row['lname'];
+                                            $email = $row['email'];
 
-                                            echo "<tr>
-                                            <td>$count</td>
-                                            <td>$stud_name</td>
-                                            <td><button class='uk-button uk-button-default' type='button'>ACCEPT</button></td>
-                                            </tr>";
+                                            $data = "<tr><td>$count</td><td>$stud_name</td><td>";
+                                            
+                                            if($row['accepted'] == TRUE){
+                                                $data .="<form method='POST' action=''>
+                                                            <input type='hidden' name='stud_email' value='$email' />
+                                                            <button class='uk-button uk-button-default' name='btnStateDeny' type='submit'>Deny</button>
+                                                        </form>";
+                                            }
+
+                                            if($row['accepted'] == FALSE){
+                                                $data .="<form method='POST' action=''>
+                                                            <input type='hidden' name='stud_email' value='$email' />
+                                                            <button class='uk-button uk-button-primary' name='btnStateAccept' type='submit'>ACCEPT</button>
+                                                        </form>";
+                                            }
+
+                                            $data .= "</td></tr>";
+                                            echo $data;
                                         }
                                     }
                                 ?>
