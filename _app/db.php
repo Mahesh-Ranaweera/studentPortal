@@ -28,7 +28,7 @@
                     field VARCHAR(60),
                     contact VARCHAR(60),
                     passwd VARCHAR(100),
-                    accepted BOOLEAN,
+                    accepted BOOLEAN DEFAULT FALSE,
                     reg_date TIMESTAMP
                 );';
 

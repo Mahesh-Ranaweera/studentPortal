@@ -5,7 +5,7 @@
 
      //insert user to db
     if(isset($_POST['submitSignup'])){
-        $email = $_POST['strEmail'];
+        $email = strtolower($_POST['strEmail']);
         $fname = $_POST['strFname'];
         $lname = $_POST['strLname'];
         $parent = $_POST['strParent'];
@@ -45,7 +45,7 @@
 
      //admin register
      if(isset($_POST['btnAdmin'])){
-        $email = $_POST['email'];
+        $email = strtolower($_POST['email']);
         $passw = password_hash($_POST['passw'], PASSWORD_BCRYPT);
 
         $sql = "INSERT INTO `admin`(`email`, `admin_type`, `passwd`)

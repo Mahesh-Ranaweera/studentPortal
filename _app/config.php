@@ -10,6 +10,10 @@
             'nav_signup' => '/studentPortal/signup',
             'nav_career' => '/studentPortal/careers',
             'nav_about' => '/studentPortal/about',
+            'admin' => 'ADMIN PORTAL',
+            'admin_quest' => '/studentPortal/_admin/questions',
+            'admin_regist' => '/studentPortal/_admin/register',
+            'signout' => '/studentPortal/_app/signout',
             'passwdlen' => 8,
         ];
 
