@@ -45,7 +45,7 @@
                             <tbody>
                                 <?php
                                     $count = 1;
-                                    $sql = 'SELECT * FROM `users`';
+                                    $sql = 'SELECT * FROM `users` ORDER BY `reg_date`';
                             
                                     $res = $conn->query($sql);
                             
@@ -62,6 +62,7 @@
                                             $district = $row['district'];
                                             $field = $row['field'];
                                             $contact = $row['contact'];
+                                            $date = $row['reg_date'];
                             
                                             #idname
                                             $idname = "modal".$count;
@@ -90,12 +91,13 @@
                                             $modal .= "<div id='$idname' class='uk-flex-top' uk-modal>
                                                             <div class='uk-modal-dialog uk-modal-body uk-margin-auto-vertical'>
                                                                 <button class'uk-modal-close-default' type='button' uk-close onclick='modal_hide($idname)'></button>
-                                                                <p>Name: $stud_name</p>
+                                                                <p><h4>Name: $stud_name</h4></p>
                                                                 <p>Parent Name: $parent</p>
                                                                 <p>School: $school</p>
                                                                 <p>District: $district</p>
                                                                 <p>Field: $field</p>
                                                                 <p>Contact: $contact</p>
+                                                                <p>Register Date: $date</p>
                                                         </div></div>";
                                             
                                             $count++;

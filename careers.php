@@ -56,7 +56,7 @@
                                 </div>
                                 <div class='uk-width-1-1'>
                                     <label for=''>Contact Information:</label>
-                                    <input class='uk-input' name='strContact' type='text' placeholder=''>
+                                    <input class='uk-input' id='phone' name='strContact' type='text' placeholder=''>
                                 </div>
                                 <div class='uk-width-1-1'>
                                     <label for=''>E-Mail:</label>
@@ -182,6 +182,10 @@
             alert('Upload Completed');
         }
 
+    });
+
+    jQuery(function($){
+        $("#phone").mask("(999) 999-9999");
     });
 
 </script>

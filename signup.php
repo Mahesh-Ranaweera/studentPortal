@@ -68,7 +68,7 @@
                                 </div>
                                 <div class='uk-width-1-1'>
                                     <label for=''>Contact Information:</label>
-                                    <input class='uk-input' name='strContact' type='text' placeholder='' required>
+                                    <input class='uk-input' id='phone' name='strContact' type='text' placeholder='' required>
                                 </div>
 
                                 <div class='uk-margin'>
@@ -127,6 +127,10 @@
     function failed(msg){
         UIkit.notification({message: msg, status: 'warning'})
     }
+
+    jQuery(function($){
+        $("#phone").mask("(999) 999-9999");
+    });
 </script>
 
 <?php

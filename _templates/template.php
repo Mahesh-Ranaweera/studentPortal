@@ -10,6 +10,7 @@
                 <link rel='stylesheet' type='text/css' href='/studentPortal/_public/css/main.css'>
 
                 <script src='https://code.jquery.com/jquery-3.1.1.min.js' integrity='sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=', crossorigin='anonymous'></script>
+                <script src='/studentPortal/_public/js/jquery.maskedinput.min.js'></script>
                 <script src='/studentPortal/_public/uikit/js/uikit.min.js'></script>
                 <script src='/studentPortal/_public/uikit/js/uikit-icons.min.js'></script>
         
