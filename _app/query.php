@@ -42,20 +42,19 @@
             $notify['msg'] = 'Already Registered';
         }
      }
-    
-
-    //Login into admin panel
-     if(isset($_POST['btnAdminLogin'])){
-        $email = $_POST['admin_email'];
-        $passw = $_POST['admin_password'];
-
-        
-     }
 
      //admin register
      if(isset($_POST['btnAdmin'])){
-         $email = $_POST['email'];
-         $passw = $_POST['passw'];
+        $email = $_POST['email'];
+        $passw = password_hash($_POST['passw'], PASSWORD_BCRYPT);
 
-         
+        $sql = "INSERT INTO `admin`(`email`, `admin_type`, `passwd`)
+                VALUES ('$email', '0', '$passw')";
+
+        if($conn->query($sql) === TRUE){
+            echo "REGISTERED";
+        }else{
+            echo "FAILED REGISTERED";
+        }
+        
      }
