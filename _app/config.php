@@ -11,8 +11,9 @@
             'nav_career' => '/studentPortal/careers',
             'nav_about' => '/studentPortal/about',
             'admin' => 'ADMIN PORTAL',
-            'admin_quest' => '/studentPortal/_admin/questions',
-            'admin_regist' => '/studentPortal/_admin/register',
+            'admin_home' => '/studentPortal/_admin/admin',
+            'admin_quest' => '/studentPortal/_admin/stud_questions',
+            'admin_regist' => '/studentPortal/_admin/stud_registeration',
             'signout' => '/studentPortal/_app/signout',
             'passwdlen' => 8,
         ];

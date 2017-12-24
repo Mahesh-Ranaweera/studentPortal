@@ -18,6 +18,14 @@
         }else{
             if(password_verify($passw ,$row['passwd'])){
                 session_start();
+
+                $user_data = array(
+                    'email' => $row['email'],
+                    'type' => $row['admin_type']
+                );
+
+                $_SESSION['udata'] = $user_data;
+                
                 header('Location: ./_admin/admin');
             }
         }

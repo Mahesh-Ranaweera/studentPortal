@@ -1,6 +1,5 @@
 <?php
-    include './_app/dependency.php';
-    include './_templates/template.php';
+    include './_app/front_end.php';
     web_header(config('site_header'));
 ?>
 

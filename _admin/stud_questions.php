@@ -14,8 +14,8 @@
                     </div>
                     <div class='uk-width-1-2@m'>
                         <ul class='uk-subnav uk-subnav-pill'>
-                            <li class='uk-active'><a href='<?php echo config('admin_home') ?>'>ADMIN</a></li>
-                            <li class=''><a href='<?php echo config('admin_quest') ?>'>QUESTIONS</a></li>
+                            <li class=''><a href='<?php echo config('admin_home') ?>'>ADMIN</a></li>
+                            <li class='uk-active'><a href='<?php echo config('admin_quest') ?>'>QUESTIONS</a></li>
                             <li class=''><a href='<?php echo config('admin_regist') ?>'>REGISTRATION</a></li>
                             <li class=''><a href='<?php echo config('signout') ?>'>SIGN OUT</a></li>
                         </ul>
@@ -29,7 +29,7 @@
 
                 <div class='uk-grid-match uk-grid-small' uk-grid>
                     <div class='uk-width-expand@m'>
-                        <div class='uk-card-title'>Admin Settings</div>
+                        <div class='uk-card-title'>Student Questions</div>
                         
                         <div class='uk-margin'>
                             <div class='user_tab'>

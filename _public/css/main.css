@@ -166,3 +166,9 @@ a {
 .web-description-txt{
   text-justify: newspaper;
 }
+
+.user_tab{
+  border: 1px solid #34495e;
+  height: auto;
+  float: left;
+}
