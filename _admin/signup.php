@@ -1,5 +1,5 @@
 <?php
-    include '../_app/dependency.php';
+    include '../_app/admin_end.php';
 ?>
 
 <form method='post' action=''>
