@@ -1,6 +1,8 @@
 <?php
     include '../_app/admin_end.php';
     web_header(config('site_header'));
+
+    $entry_modals = '';
 ?>
 
 <div class='uk-container'>
@@ -41,20 +43,32 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php   
+                                <?php
                                     $count = 1;
                                     $sql = 'SELECT * FROM `users`';
-
+                            
                                     $res = $conn->query($sql);
-
+                            
                                     if($res->num_rows<=0){
                                         echo 'NO DATA';
                                     }else{
+                                        $modal = '';
+
                                         while($row=mysqli_fetch_array($res)){
                                             $stud_name = $row['fname'].' '.$row['lname'];
                                             $email = $row['email'];
-
-                                            $data = "<tr><td>$count</td><td>$stud_name</td><td>";
+                                            $parent = $row['parent'];
+                                            $school = $row['school'];
+                                            $district = $row['district'];
+                                            $field = $row['field'];
+                                            $contact = $row['contact'];
+                            
+                                            #idname
+                                            $idname = "modal".$count;
+                            
+                                            #entry
+                                            $data = "<tr><td>$count</td><td>
+                                            <a href='#' uk-toggle='target: #$idname'>$stud_name</a></td><td>";
                                             
                                             if($row['accepted'] == TRUE){
                                                 $data .="<form method='POST' action=''>
@@ -62,17 +76,33 @@
                                                             <button class='uk-button uk-button-default' name='btnStateDeny' type='submit'>Deny</button>
                                                         </form>";
                                             }
-
+                            
                                             if($row['accepted'] == FALSE){
                                                 $data .="<form method='POST' action=''>
                                                             <input type='hidden' name='stud_email' value='$email' />
                                                             <button class='uk-button uk-button-primary' name='btnStateAccept' type='submit'>ACCEPT</button>
                                                         </form>";
                                             }
-
+                            
                                             $data .= "</td></tr>";
+                            
+                                            #Modal
+                                            $modal .= "<div id='$idname' class='uk-flex-top' uk-modal>
+                                                            <div class='uk-modal-dialog uk-modal-body uk-margin-auto-vertical'>
+                                                                <button class'uk-modal-close-default' type='button' uk-close onclick='modal_hide($idname)'></button>
+                                                                <p>Name: $stud_name</p>
+                                                                <p>Parent Name: $parent</p>
+                                                                <p>School: $school</p>
+                                                                <p>District: $district</p>
+                                                                <p>Field: $field</p>
+                                                                <p>Contact: $contact</p>
+                                                        </div></div>";
+                                            
+                                            $count++;
+                                        
                                             echo $data;
                                         }
+                                        $entry_modals = $modal;
                                     }
                                 ?>
                                 
@@ -89,6 +119,15 @@
     </div>
 </div>
 
+<?php   
+    echo $entry_modals;
+?>
+
+<script>
+    function modal_hide(modalid){
+        UIkit.modal(modalid).hide();
+    }
+</script>
 
 <?php
     web_footer();
