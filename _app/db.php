@@ -19,23 +19,35 @@
 
     if($conn->query($sql) === TRUE){
         $sql2 = 'CREATE TABLE `users` (
-                    email VARCHAR(60) PRIMARY KEY,
-                    fname VARCHAR(30),
-                    lname VARCHAR(30) NOT NULL,
+                    email VARCHAR(100) PRIMARY KEY,
+                    fname VARCHAR(100),
+                    lname VARCHAR(100),
                     parent VARCHAR(100),
                     school VARCHAR(100),
-                    district VARCHAR(60),
-                    field VARCHAR(60),
-                    contact VARCHAR(60),
+                    district VARCHAR(100),
+                    field VARCHAR(100),
+                    contact VARCHAR(100),
                     passwd VARCHAR(100),
                     accepted BOOLEAN DEFAULT FALSE,
                     reg_date TIMESTAMP
                 );';
 
         $sql2 .= 'CREATE TABLE `admin`(
-                    email VARCHAR(60) PRIMARY KEY,
+                    email VARCHAR(100) PRIMARY KEY,
                     admin_type INT(10),
                     passwd VARCHAR(100)
+                );';
+
+        $sql2 .= 'CREATE TABLE `career`(
+                    email VARCHAR(100) PRIMARY KEY,
+                    fname VARCHAR(100),
+                    lname VARCHAR(100),
+                    edu VARCHAR(100),
+                    prof VARCHAR(100),
+                    address VARCHAR(200),
+                    phone VARCHAR(100),
+                    cv_name VARCHAR(100),
+                    cv_data BLOB
                 );';
 
         $res = mysqli_multi_query($conn, $sql2);

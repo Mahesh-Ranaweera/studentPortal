@@ -129,6 +129,7 @@
 
     var bar = document.getElementById('js-progressbar');
 
+    /*
     UIkit.upload('.js-upload', {
 
         url: '',
@@ -179,10 +180,11 @@
                 bar.setAttribute('hidden', 'hidden');
             }, 1000);
 
-            alert('Upload Completed');
+            //alert('Upload Completed');
         }
 
     });
+    */
 
     jQuery(function($){
         $("#phone").mask("(999) 999-9999");

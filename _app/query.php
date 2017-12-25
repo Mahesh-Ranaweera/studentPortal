@@ -100,6 +100,8 @@
         $phone = $_POST['strPhone'];
         $email = $_POST['strEmail'];
 
+        echo $fname.$lname.$edu.$prof.$address.$phone.$email;
+
         //file
         $file = $_FILES['upload_file']['tmp_name'];
         $file_name = $_FILES['upload_file']['name'];
@@ -126,7 +128,14 @@
 
         #if no error continue
         if($error){
-            
+            $sql = "INSERT INTO `career`(`email`, `fname`, `lname`, `edu`, `prof`, `address`, `phone`, `cv_name`, `cv_data`)
+                    VALUES('$email', '$fname', '$lname', '$edu', '$prof', '$address', '$phone', '$file_name', '$file')";
+
+            if($conn->query($sql) === TRUE){
+                echo 'DONE';
+            }else{
+                echo 'FAILED';
+            }
         }else{
             echo 'FILE ERROR';
         }
