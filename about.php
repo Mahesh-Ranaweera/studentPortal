@@ -15,7 +15,7 @@
                     <div class='uk-width-1-2@m'>
                         <ul class='uk-subnav uk-subnav-pill'>
                             <li class=''><a href='<?php echo config('nav_home') ?>'>HOME</a></li>
-                            <li class=''><a href='<?php echo config('nav_signup') ?>'>SIGN UP</a></li>
+                            <li class=''><a href='<?php echo config('nav_signup') ?>'>STUDENT</a></li>
                             <li class=''><a href='<?php echo config('nav_career') ?>'>CAREERS</a></li>
                             <li class='uk-active'><a href='<?php echo config('nav_about') ?>'>ABOUT US</a></li>
                             <li class=''><a href='#' uk-toggle="target: #admin">ADMIN</a></li>

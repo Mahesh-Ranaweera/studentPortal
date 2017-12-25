@@ -15,7 +15,7 @@
                     <div class='uk-width-1-2@m'>
                         <ul class='uk-subnav uk-subnav-pill'>
                             <li class=''><a href='<?php echo config('nav_home') ?>'>HOME</a></li>
-                            <li class=''><a href='<?php echo config('nav_signup') ?>'>SIGN UP</a></li>
+                            <li class=''><a href='<?php echo config('nav_signup') ?>'>STUDENT</a></li>
                             <li class='uk-active'><a href='<?php echo config('nav_career') ?>'>CAREERS</a></li>
                             <li class=''><a href='<?php echo config('nav_about') ?>'>ABOUT US</a></li>
                             <li class=''><a href='#' uk-toggle="target: #admin">ADMIN</a></li>
@@ -34,42 +34,42 @@
                         <div class='uk-card-title'>Careers</div>
                         
                         <div class='uk-margin'>
-                            <form class='uk-grid-small' uk-grid>
+                            <form class='uk-grid-small' method='POST' enctype='multipart/form-data' uk-grid>
                                 <div class='uk-width-1-2@s'>
                                     <label for=''>First Name:</label>
-                                    <input class='uk-input' name='first_name' type='text' placeholder=''>
+                                    <input class='uk-input' name='strFname' type='text' placeholder='' required>
                                 </div>
                                 <div class='uk-width-1-2@s'>
                                     <label for=''>Last Name:</label>
-                                    <input class='uk-input' name='last_name' type='text' placeholder=''>
+                                    <input class='uk-input' name='strLname' type='text' placeholder='' required>
                                 </div>
                                 <div class='uk-width-1-1'>Education Qualification:</label>
-                                    <input class='uk-input' name='strEduQ' type='text' placeholder=''>
+                                    <input class='uk-input' name='strEduQ' type='text' placeholder='' required>
                                 </div>
                                 <div class='uk-width-1-1'>
                                     <label for=''>Professional Qualification:</label>
-                                    <input class='uk-input' name='strProfQ' type='text' placeholder=''>
+                                    <input class='uk-input' name='strProfQ' type='text' placeholder='' required>
                                 </div>
                                 <div class='uk-width-1-1'>
                                     <label for=''>Home Address:</label>
-                                    <input class='uk-input' name='strAddress' type='text' placeholder=''>
+                                    <input class='uk-input' name='strAddress' type='text' placeholder='' required>
                                 </div>
                                 <div class='uk-width-1-1'>
                                     <label for=''>Contact Information:</label>
-                                    <input class='uk-input' id='phone' name='strContact' type='text' placeholder=''>
+                                    <input class='uk-input' id='strPhone' name='strContact' type='text' placeholder='' required>
                                 </div>
                                 <div class='uk-width-1-1'>
                                     <label for=''>E-Mail:</label>
-                                    <input class='uk-input' name='strEmail' type='text' placeholder=''>
+                                    <input class='uk-input' name='strEmail' type='text' placeholder='' required>
                                 </div>
 
                                 <div class='uk-width-1-1'>
                                     <label for=''>Upload your Resume/CV:</label>
                                     <div class='js-upload uk-placeholder uk-width-1-1'>
                                         <span uk-icon='icon: cloud-upload'></span>
-                                        <span class='uk-text-middle'>Drop Files Here or</span>
+                                        <span class='uk-text-middle'>Drop File Here or</span>
                                         <div uk-form-custom>
-                                            <input type='file' name='upload_file' multiple>
+                                            <input type='file' name='upload_file' accept='.pdf, .docx, .doc, .odt, .jpg, .png, .gif' required>
                                             <span class='uk-link'>browse to select</span>
                                         </div>
                                     </div>

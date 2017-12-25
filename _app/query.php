@@ -86,3 +86,49 @@
         }
         
      }
+     
+     //file upload size:lets limit it to 1MB
+     $max_file_size = 1024*1000;
+
+     //career form
+     if(isset($_POST['submitCareer']) && $_FILES['upload_file']['size'] !=0){
+        $fname = $_POST['strFname'];
+        $lname = $_POST['strLname'];
+        $edu   = $_POST['strEduQ'];
+        $prof  = $_POST['strProfQ'];
+        $address= $_POST['strAddress'];
+        $phone = $_POST['strPhone'];
+        $email = $_POST['strEmail'];
+
+        //file
+        $file = $_FILES['upload_file']['tmp_name'];
+        $file_name = $_FILES['upload_file']['name'];
+        $file = file_get_contents($file);
+        $file = base64_encode($file);
+
+        $f_size = $_FILES['upload_file']['size'];
+        $f_tmp  = explode('.', $file_name);
+        $f_ext  = end($f_tmp);
+
+        //accepted file type
+        $extArr = array('pdf', 'docx', 'doc', 'odt', 'jpg', 'jpg', 'png', 'gif');
+        $error = FALSE;
+
+        #check the file type
+        if(in_array($f_ext, $extArr) === FALSE){
+            $error = TRUE;
+        }
+
+        #check the file size
+        if($f_size <= 0 || $f_size >= $max_file_size){
+            $error = TRUE;
+        }
+
+        #if no error continue
+        if($error){
+            
+        }else{
+            echo 'FILE ERROR';
+        }
+        
+     }
