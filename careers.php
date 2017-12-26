@@ -18,7 +18,15 @@
                             <li class=''><a href='<?php echo config('nav_signup') ?>'>STUDENT</a></li>
                             <li class='uk-active'><a href='<?php echo config('nav_career') ?>'>CAREERS</a></li>
                             <li class=''><a href='<?php echo config('nav_about') ?>'>ABOUT US</a></li>
-                            <li class=''><a href='#' uk-toggle="target: #admin">ADMIN</a></li>
+                            <li class=''><a href='#'>ADMIN</a></li>
+
+                            <!--signin-->
+                            <div uk-dropdown>
+                                <ul class="uk-nav uk-dropdown-nav">
+                                    <li><a href="#">STUDENT PORTAL</a></li>
+                                    <li><a href="#" uk-toggle="target: #admin">ADMIN PORTAL</a></li>
+                                </ul>
+                            </div>
                         </ul>
                     </div>
                 </div>
@@ -98,94 +106,10 @@
     </div>
 </div>
 
-<!-- Admin Login Modal -->
-<div id="admin" uk-modal>
-    <div class="uk-modal-dialog uk-modal-body">
-        <div class='uk-card-title'>Admin Login</div>
-
-        <form class='uk-grid-small' method='POST' uk-grid>
-            <div class='uk-width-1-1'>
-                <label for=''>Admin Email:</label>
-                <input class='uk-input' name='admin_email' type='email' placeholder=''>
-            </div>
-            <div class='uk-width-1-1'>
-                <label for=''>Password:</label>
-                <input class='uk-input' name='admin_password' type='password' placeholder=''>
-            </div>
-
-            <div class='uk-margin'>
-                <p class="uk-text-right">
-                    <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
-                    <button class="uk-button uk-button-primary" name='btnAdminLogin' type="submit">SIGN IN</button>
-                </p>
-            </div>
-        </form>
-    </div>
-</div>
-
 <script>
 
-    var bar = document.getElementById('js-progressbar');
-
-    /*
-    UIkit.upload('.js-upload', {
-
-        url: '',
-        multiple: true,
-
-        beforeSend: function () {
-            console.log('beforeSend', arguments);
-        },
-        beforeAll: function () {
-            console.log('beforeAll', arguments);
-        },
-        load: function () {
-            console.log('load', arguments);
-        },
-        error: function () {
-            console.log('error', arguments);
-        },
-        complete: function () {
-            console.log('complete', arguments);
-        },
-
-        loadStart: function (e) {
-            console.log('loadStart', arguments);
-
-            bar.removeAttribute('hidden');
-            bar.max = e.total;
-            bar.value = e.loaded;
-        },
-
-        progress: function (e) {
-            console.log('progress', arguments);
-
-            bar.max = e.total;
-            bar.value = e.loaded;
-        },
-
-        loadEnd: function (e) {
-            console.log('loadEnd', arguments);
-
-            bar.max = e.total;
-            bar.value = e.loaded;
-        },
-
-        completeAll: function () {
-            console.log('completeAll', arguments);
-
-            setTimeout(function () {
-                bar.setAttribute('hidden', 'hidden');
-            }, 1000);
-
-            //alert('Upload Completed');
-        }
-
-    });
-    */
-
     jQuery(function($){
-        $("#phone").mask("(999) 999-9999");
+        $("#strPhone").mask("(999) 999-9999");
     });
 
 </script>

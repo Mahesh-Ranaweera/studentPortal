@@ -18,7 +18,15 @@
                             <li class=''><a href='<?php echo config('nav_signup') ?>'>STUDENT</a></li>
                             <li class=''><a href='<?php echo config('nav_career') ?>'>CAREERS</a></li>
                             <li class='uk-active'><a href='<?php echo config('nav_about') ?>'>ABOUT US</a></li>
-                            <li class=''><a href='#' uk-toggle="target: #admin">ADMIN</a></li>
+                            <li class=''><a href='#'>ADMIN</a></li>
+
+                            <!--signin-->
+                            <div uk-dropdown>
+                                <ul class="uk-nav uk-dropdown-nav">
+                                    <li><a href="#">STUDENT PORTAL</a></li>
+                                    <li><a href="#" uk-toggle="target: #admin">ADMIN PORTAL</a></li>
+                                </ul>
+                            </div>
                         </ul>
                     </div>
                 </div>
@@ -58,32 +66,6 @@
 
     </div>
 </div>
-
-<!-- Admin Login Modal -->
-<div id="admin" uk-modal>
-    <div class="uk-modal-dialog uk-modal-body">
-        <div class='uk-card-title'>Admin Login</div>
-
-        <form class='uk-grid-small' method='POST' uk-grid>
-            <div class='uk-width-1-1'>
-                <label for=''>Admin Email:</label>
-                <input class='uk-input' name='admin_email' type='email' placeholder=''>
-            </div>
-            <div class='uk-width-1-1'>
-                <label for=''>Password:</label>
-                <input class='uk-input' name='admin_password' type='password' placeholder=''>
-            </div>
-
-            <div class='uk-margin'>
-                <p class="uk-text-right">
-                    <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
-                    <button class="uk-button uk-button-primary" name='btnAdminLogin' type="submit">SIGN IN</button>
-                </p>
-            </div>
-        </form>
-    </div>
-</div>
-
 
 <?php
     web_footer();
