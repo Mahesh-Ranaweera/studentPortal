@@ -71,6 +71,7 @@
                 
             }else{
                 echo "EMAIL NOT FOUND";
+                header('Location: ../_admin/admin');
             }
         }
     }
@@ -83,7 +84,9 @@
 
         if($conn->query($sql) === TRUE){
             echo "USER DELETED";
+            header('Location: ../_admin/admin');
         }else{
             echo "FAILED TO DELETE";
+            header('Location: ../_admin/admin');
         }
     }
