@@ -105,6 +105,7 @@
         //file
         $file = $_FILES['upload_file']['tmp_name'];
         $file_name = $_FILES['upload_file']['name'];
+        $file_type = $_FILES['upload_file']['type'];
         $file = file_get_contents($file);
         $file = base64_encode($file);
 
@@ -113,7 +114,7 @@
         $f_ext  = end($f_tmp);
 
         //accepted file type
-        $extArr = array('pdf', 'docx', 'doc', 'odt', 'jpg', 'jpg', 'png', 'gif');
+        $extArr = array('pdf', 'docx', 'doc', 'odt');
         $error = FALSE;
 
         #check the file type
@@ -127,9 +128,9 @@
         }
 
         #if no error continue
-        if($error){
-            $sql = "INSERT INTO `career`(`email`, `fname`, `lname`, `edu`, `prof`, `address`, `phone`, `cv_name`, `cv_data`)
-                    VALUES('$email', '$fname', '$lname', '$edu', '$prof', '$address', '$phone', '$file_name', '$file')";
+        if(!$error){
+            $sql = "INSERT INTO `career`(`email`, `fname`, `lname`, `edu`, `prof`, `address`, `phone`, `cv_name`, `cv_type`, `cv_size`, `cv_data`)
+                    VALUES('$email', '$fname', '$lname', '$edu', '$prof', '$address', '$phone', '$file_name', '$file_type', '$f_size', '$file')";
 
             if($conn->query($sql) === TRUE){
                 echo 'DONE';

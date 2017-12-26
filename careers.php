@@ -56,7 +56,7 @@
                                 </div>
                                 <div class='uk-width-1-1'>
                                     <label for=''>Contact Information:</label>
-                                    <input class='uk-input' id='strPhone' name='strContact' type='text' placeholder='' required>
+                                    <input class='uk-input' id='strPhone' name='strPhone' type='text' placeholder='' required>
                                 </div>
                                 <div class='uk-width-1-1'>
                                     <label for=''>E-Mail:</label>
@@ -66,11 +66,9 @@
                                 <div class='uk-width-1-1'>
                                     <label for=''>Upload your Resume/CV:</label>
                                     <div class='js-upload uk-placeholder uk-width-1-1'>
-                                        <span uk-icon='icon: cloud-upload'></span>
-                                        <span class='uk-text-middle'>Drop File Here or</span>
                                         <div uk-form-custom>
-                                            <input type='file' name='upload_file' accept='.pdf, .docx, .doc, .odt, .jpg, .png, .gif' required>
-                                            <span class='uk-link'>browse to select</span>
+                                            <input type='file' name='upload_file' accept='.pdf, .docx, .doc, .odt' required>
+                                            <span class='uk-link'><span uk-icon='icon: cloud-upload'></span> Browse to select</span>
                                         </div>
                                     </div>
 

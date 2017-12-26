@@ -47,7 +47,9 @@
                     address VARCHAR(200),
                     phone VARCHAR(100),
                     cv_name VARCHAR(100),
-                    cv_data BLOB
+                    cv_type VARCHAR(100),
+                    cv_size VARCHAR(100),
+                    cv_data MEDIUMBLOB
                 );';
 
         $res = mysqli_multi_query($conn, $sql2);
