@@ -17,7 +17,7 @@
                             <li class=''><a href='<?php echo config('admin_home') ?>'>ADMIN</a></li>
                             <li class='uk-active'><a href='<?php echo config('admin_quest') ?>'>QUESTIONS</a></li>
                             <li class=''><a href='<?php echo config('admin_regist') ?>'>REGISTRATION</a></li>
-                            <li class=''><a href='<?php echo config('signout') ?>'>SIGN OUT</a></li>
+                            <li class=''><a href='<?php echo config('signout') ?>'>SIGN OUT<span uk-icon='icon: sign-out'></span></a></li>
                         </ul>
                     </div>
                 </div>

@@ -18,12 +18,12 @@
                             <li class=''><a href='<?php echo config('nav_signup') ?>'>STUDENT</a></li>
                             <li class='uk-active'><a href='<?php echo config('nav_career') ?>'>CAREERS</a></li>
                             <li class=''><a href='<?php echo config('nav_about') ?>'>ABOUT US</a></li>
-                            <li class=''><a href='#'>ADMIN</a></li>
+                            <li class=''><a href='#'>SIGN IN<span uk-icon='icon: sign-in'></span></a></li>
 
                             <!--signin-->
-                            <div uk-dropdown>
+                           <div uk-dropdown>
                                 <ul class="uk-nav uk-dropdown-nav">
-                                    <li><a href="#">STUDENT PORTAL</a></li>
+                                    <li><a href="#" uk-toggle="target: #stud">STUDENT PORTAL</a></li>
                                     <li><a href="#" uk-toggle="target: #admin">ADMIN PORTAL</a></li>
                                 </ul>
                             </div>
@@ -107,7 +107,14 @@
 </div>
 
 <script>
+    function success(msg){
+        UIkit.notification({message: msg, status: 'success'})
+    }
 
+    function failed(msg){
+        UIkit.notification({message: msg, status: 'warning'})
+    }
+    
     jQuery(function($){
         $("#strPhone").mask("(999) 999-9999");
     });
@@ -115,5 +122,19 @@
 </script>
 
 <?php
+    $errtype = $notify['type'];
+    $msg = $notify['msg'];
+
+    $notify['type'] = '';
+    $notify['msg'] = '';
+
+    if($errtype == 'good'){
+        printf("<script>success('".$msg."')</script>");
+    }
+    
+    if($errtype == 'error'){
+        printf("<script>failed('".$msg."')</script>");
+    }
+
     web_footer();
 ?>

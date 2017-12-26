@@ -18,7 +18,7 @@
                             <li class=''><a href='<?php echo config('nav_signup') ?>'>STUDENT</a></li>
                             <li class=''><a href='<?php echo config('nav_career') ?>'>CAREERS</a></li>
                             <li class=''><a href='<?php echo config('nav_about') ?>'>ABOUT US</a></li>
-                            <li class=''><a href='#'>ADMIN</a></li>
+                            <li class=''><a href='#'>SIGN IN<span uk-icon='icon: sign-in'></span></a></li>
 
                             <!--signin-->
                             <div uk-dropdown>
@@ -65,6 +65,30 @@
     </div>
 </div>
 
+<script>
+    function success(msg){
+        UIkit.notification({message: msg, status: 'success'})
+    }
+
+    function failed(msg){
+        UIkit.notification({message: msg, status: 'warning'})
+    }
+</script>
+
 <?php
+    $errtype = $notify['type'];
+    $msg = $notify['msg'];
+
+    $notify['type'] = '';
+    $notify['msg'] = '';
+
+    if($errtype == 'good'){
+        printf("<script>success('".$msg."')</script>");
+    }
+    
+    if($errtype == 'error'){
+        printf("<script>failed('".$msg."')</script>");
+    }
+
     web_footer();
 ?>

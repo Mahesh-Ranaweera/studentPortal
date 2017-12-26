@@ -18,12 +18,12 @@
                             <li class='uk-active'><a href='<?php echo config('nav_signup') ?>'>STUDENT</a></li>
                             <li class=''><a href='<?php echo config('nav_career') ?>'>CAREERS</a></li>
                             <li class=''><a href='<?php echo config('nav_about') ?>'>ABOUT US</a></li>
-                            <li class=''><a href='#'>ADMIN</a></li>
+                            <li class=''><a href='#'>SIGN IN<span uk-icon='icon: sign-in'></span></a></li>
 
                             <!--signin-->
                             <div uk-dropdown>
                                 <ul class="uk-nav uk-dropdown-nav">
-                                    <li><a href="#">STUDENT PORTAL</a></li>
+                                    <li><a href="#" uk-toggle="target: #stud">STUDENT PORTAL</a></li>
                                     <li><a href="#" uk-toggle="target: #admin">ADMIN PORTAL</a></li>
                                 </ul>
                             </div>

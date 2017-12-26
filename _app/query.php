@@ -54,7 +54,9 @@
         $row = mysqli_fetch_assoc($res);
 
         if($res->num_rows<=0){
-            echo "USER NOT FOUND";
+            #echo "USER NOT FOUND";
+            $notify['type'] = 'error';
+            $notify['msg'] = 'User not found';
         }else{
             if(password_verify($passw ,$row['passwd'])){
                 session_start();
@@ -67,6 +69,9 @@
                 $_SESSION['udata'] = $user_data;
                 
                 header('Location: ./_admin/admin');
+            }else{
+                $notify['type'] = 'error';
+                $notify['msg'] = 'Enter correct password';
             }
         }
      }
@@ -100,7 +105,7 @@
         $phone = $_POST['strPhone'];
         $email = $_POST['strEmail'];
 
-        echo $fname.$lname.$edu.$prof.$address.$phone.$email;
+        #echo $fname.$lname.$edu.$prof.$address.$phone.$email;
 
         //file
         $file = $_FILES['upload_file']['tmp_name'];
@@ -133,12 +138,18 @@
                     VALUES('$email', '$fname', '$lname', '$edu', '$prof', '$address', '$phone', '$file_name', '$file_type', '$f_size', '$file')";
 
             if($conn->query($sql) === TRUE){
-                echo 'DONE';
+                #echo 'DONE';
+                $notify['type'] = 'good';
+                $notify['msg'] = 'Successfully Submit Your Form';
             }else{
-                echo 'FAILED';
+                #echo 'FAILED';
+                $notify['type'] = 'error';
+                $notify['msg'] = 'Something Went Wrong, Try Again';
             }
         }else{
-            echo 'FILE ERROR';
+            #echo 'FILE ERROR';
+            $notify['type'] = 'error';
+            $notify['msg'] = 'File Error';
         }
         
      }
