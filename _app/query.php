@@ -76,6 +76,44 @@
         }
      }
 
+     //Login into admin panel
+    if(isset($_POST['btnStudLogin'])){
+        $email = $_POST['stud_email'];
+        $passw = $_POST['stud_password'];
+
+        $sql = "SELECT `email`, `passwd` FROM `users` WHERE `email`='".$email."'";
+
+        $res = $conn->query($sql);
+        $row = mysqli_fetch_assoc($res);
+
+        if($res->num_rows<=0){
+            #echo "USER NOT FOUND";
+            $notify['type'] = 'error';
+            $notify['msg'] = 'User not found';
+        }else{
+            if(password_verify($passw ,$row['passwd'])){
+                session_start();
+
+                $user_data = array(
+                    'email' => $row['email'],
+                    'name' => $row['fname'].' '.$row['lname'],
+                    'parent' => $row['parent'],
+                    'school' => $row['school'],
+                    'district' => $row['district'],
+                    'field' => $row['field'],
+                    'contact' => $row['contact'],
+                );
+
+                $_SESSION['udata'] = $user_data;
+                
+                header('Location: ./_user/portal');
+            }else{
+                $notify['type'] = 'error';
+                $notify['msg'] = 'Enter correct password';
+            }
+        }
+     }
+
      //admin register
      if(isset($_POST['btnAdmin'])){
         $email = strtolower($_POST['email']);
