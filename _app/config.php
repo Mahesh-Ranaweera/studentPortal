@@ -35,3 +35,16 @@
         }
         return $ranStr;
     }
+
+    //uniqueID generator
+    function uniqueID(){
+        $len = 6;
+        $char = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charLen = strlen($char);
+        $ranStr = '';
+        for ($i = 0; $i < $len; $i++) {
+            $ranStr .= $char[rand(0, $charLen - 1)];
+        }
+        $ranStr = $ranStr.time();
+        return $ranStr;
+    }

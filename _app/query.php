@@ -14,7 +14,9 @@
         $field = $_POST['strField'];
         $contact = $_POST['strContact'];
 
-        $passwd = password_hash(codegen(), PASSWORD_BCRYPT);
+        $code = codegen();
+        $passwd = password_hash($code, PASSWORD_BCRYPT);
+        echo $code;
 
         //query
         $sql = "INSERT INTO `users`(`email`, `fname`, `lname`, `parent`, `school`, `district`, `field`, `contact`, `passwd`) 

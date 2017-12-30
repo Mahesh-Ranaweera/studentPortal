@@ -51,6 +51,14 @@
                     cv_size VARCHAR(100),
                     cv_data MEDIUMBLOB
                 );';
+        
+        $sql2 .= 'CREATE TABLE `question`(
+                    id VARCHAR(30) PRIMARY KEY,
+                    email VARCHAR(100),
+                    question MEDIUMTEXT,
+                    answer MEDIUMTEXT DEFAULT NULL,
+                    create_date TIMESTAMP
+                );';
 
         $res = mysqli_multi_query($conn, $sql2);
     }

@@ -1,29 +1,20 @@
 <?php
     /**
-     *User class for registering new users
+     * User Query
      */
 
-     class User{
-        public $fname;
-        public $lname;
-        public $parent;
-        public $school;
-        public $district;
-        public $field;
-        public $contact;
+    if(isset($_POST['submitQuestion']) && $_POST['postQuestion'] != null){
+        $questID = uniqueID();
+        $postQuestion = $_POST['postQuestion'];
 
-        public function __construct($fname, $lname, $parent, $school, $district, $field, $contact){
-            $this->fname = $fname;
-            $this->lname = $fname;
-            $this->parent= $parent;
-            $this->school= $school;
-            $this->district = $district;
-            $this->field = $field;
-            $this->contact=$contact;
+        $sql = "INSERT INTO `question`(`id`, `email`, `question`, `answer`) 
+                VALUES ('$questID', '$user_email', '$postQuestion', 'null')";
+
+        if($conn->query($sql) === TRUE){
+            echo "QUESTION SUBMITTED";
+            header('Location: ../_user/portal');
+        }else{
+            echo "FAILED";
+            header('Location: ../_user/portal');
         }
-
-        public function getName(){
-            return $this->fname;
-        }
-
-     }
+    }

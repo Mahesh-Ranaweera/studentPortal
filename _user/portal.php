@@ -34,10 +34,10 @@
                         <div class='uk-margin'>
                             <form class='uk-grid-small' method='POST'>
                                 <div class='uk-margin'>
-                                    <textarea name="eventCont" id="eventCont" required></textarea>
+                                    <textarea name="postQuestion" id="postQuestion" required></textarea>
                                     <script type="text/javascript">
                                         CKEDITOR.config.customConfig = '<?php echo config('ckeditor'); ?>/user-config.js';
-                                        CKEDITOR.replace('eventCont');
+                                        CKEDITOR.replace('postQuestion');
                                     </script>
                                 </div>
 
@@ -66,12 +66,65 @@
                                 <tr>
                                     <th class="uk-width-small">#</th>
                                     <th>Question</th>
-                                    <th>Answer</th>
+                                    <th>Manage</th>
                                 </tr>
                             </thead>
                             <tbody>
+                            <?php
+                                    $count = 1;
+                                    $sql = "SELECT * FROM `question` WHERE `email`='".$user_email."' ORDER BY `create_date`";
+                            
+                                    $res = $conn->query($sql);
+                            
+                                    if($res->num_rows<=0){
+                                        echo 'NO DATA';
+                                    }else{
+                                        $modal = '';
 
-                                
+                                        while($row=mysqli_fetch_array($res)){
+                                            $id = $row['id'];
+                                            $question = $row['question'];
+                                            $answer = $row['answer'];
+                                            
+                                            #idname
+                                            $idname = "modal".$count;
+
+                                            #entry
+                                            $data = "<tr><td>$count</td>
+                                                     <td><a href='#' uk-toggle='target: #$idname'>Question $count";
+                                            
+                                            if($answer == 'null'){
+                                                $data .= "_(NOT ANSWERED)</a></td>";    
+                                            }else{
+                                                $data .= "_<b>(ANSWERED)</b></a></td>";
+                                            }
+
+                                            if($answer == 'null'){
+                                                $data .= "<td>DELETE</td>";    
+                                            }
+
+                                            $data .= "</tr>";
+                            
+                                            #Modal
+                                            $modal .= "<div id='$idname' class='uk-modal-full' uk-modal>
+                                                        <div class='uk-modal-dialog'>
+                                                            <button class='uk-modal-close-full uk-close-large' type='button' uk-close onclick='modal_hide($idname)'></button>
+                                                            <div class='uk-padding-large' uk-height-viewport>
+                                                                <div class='uk-card-title'>Question</div>
+                                                                <p>$question</p>
+                                                                <hr class='uk-margin-small'></hr>
+                                                                <div class='uk-card-title'>Answer</div>
+                                                                <p>$answer</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>";
+
+                                            $count++;
+                                            echo $data;
+                                        }
+                                        $entry_modals = $modal;
+                                    }
+                                ?>
                             </tbody>
                             </table>
                         </div>
@@ -86,7 +139,7 @@
 </div>
 
 <?php   
-    #echo $entry_modals;
+    echo $entry_modals;
 ?>
 
 <script>
