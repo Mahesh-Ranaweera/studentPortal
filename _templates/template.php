@@ -13,6 +13,7 @@
                 <script src='/studentPortal/_public/js/jquery.maskedinput.min.js'></script>
                 <script src='/studentPortal/_public/uikit/js/uikit.min.js'></script>
                 <script src='/studentPortal/_public/uikit/js/uikit-icons.min.js'></script>
+                <script src='/studentPortal/_public/ckeditor/ckeditor.js'></script>
         
                 <!--favicon-->
                 </head><body>";

@@ -17,6 +17,7 @@
             'signout' => '/studentPortal/_app/signout',
             'user' => 'USER PORTAL',
             'user_home' => '/studentPortal/portal',
+            'ckeditor' => '/studentPortal/_public/ckeditor',
             'passwdlen' => 8,
         ];
 
