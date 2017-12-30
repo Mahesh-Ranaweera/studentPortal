@@ -100,7 +100,12 @@
                                             }
 
                                             if($answer == 'null'){
-                                                $data .= "<td>DELETE</td>";    
+                                                $data .= "<td><form method='POST' action=''>
+                                                                <input type='hidden' name='questionID' value='$id' />
+                                                                <button class='uk-button uk-button-default' name='btnDeleteQuestion' type='submit'><span uk-icon='icon: close'></span></button>
+                                                            </form></td>";    
+                                            }else{
+                                                $data .= "<td></td>";
                                             }
 
                                             $data .= "</tr>";
@@ -115,9 +120,7 @@
                                                                 <hr class='uk-margin-small'></hr>
                                                                 <div class='uk-card-title'>Answer</div>
                                                                 <p>$answer</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>";
+                                                            </div></div></div>";
 
                                             $count++;
                                             echo $data;

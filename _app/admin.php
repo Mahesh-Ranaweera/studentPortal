@@ -90,3 +90,19 @@
             header('Location: ../_admin/admin');
         }
     }
+
+    //submit the answer to question
+    if(isset($_POST['submitAnswer']) && $_POST['postAnswer'] != null){
+        $questionID = $_POST['questionID'];
+        $answer = $_POST['postAnswer'];
+        
+        $sql = "UPDATE `question` SET `answer`='$answer' WHERE `id`='".$questionID."'";
+
+        if($conn->query($sql) === TRUE){
+            echo "ANSWER SUBMITTED";
+            header('Location: ../_admin/stud_questions');
+        }else{
+            echo "FAILED";
+            header('Location: ../_admin/stud_questions');
+        }
+    }

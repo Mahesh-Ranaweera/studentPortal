@@ -37,11 +37,67 @@
                                 <tr>
                                     <th class="uk-width-small">#</th>
                                     <th>Question</th>
-                                    <th class="uk-width-small">Answer</th>
                                 </tr>
                             </thead>
                             <tbody>
+                            <?php
+                                    $count = 1;
+                                    $check = 'null';
+                                    $sql = "SELECT * FROM `question` WHERE `answer`='".$check."' ORDER BY `create_date`";
+                            
+                                    $res = $conn->query($sql);
+                            
+                                    if($res->num_rows<=0){
+                                        echo 'NO DATA';
+                                    }else{
+                                        $modal = '';
 
+                                        while($row=mysqli_fetch_array($res)){
+                                            $id = $row['id'];
+                                            $question = $row['question'];
+                                            $answer = $row['answer'];
+
+                                            $path = config('ckeditor').'/user-config.js';
+                                            
+                                            #idname
+                                            $idname = "modal".$count;
+                                            $idanswer = "ckeditor".$count;
+
+                                            #entry
+                                            $data = "<tr><td>$count</td>
+                                                     <td><a href='#' uk-toggle='target: #$idname'>Question $count</a></td></tr>";
+                                            
+                                            #Modal
+                                            $modal .= "<div id='$idname' class='uk-modal-full' uk-modal>
+                                                        <div class='uk-modal-dialog'>
+                                                            <button class='uk-modal-close-full uk-close-large' type='button' uk-close onclick='modal_hide($idname)'></button>
+                                                            <div class='uk-padding-large' uk-height-viewport>
+                                                                <div class='uk-card-title'>Question</div>
+                                                                <p>$question</p>
+                                                                <hr class='uk-margin-small'></hr>
+                                                                <div class='uk-card-title'>Answer</div>
+                                                                <form class='uk-grid-small' method='POST'>
+                                                                    <div class='uk-margin'>
+                                                                        <textarea name='postAnswer' id='$idanswer' required></textarea>
+                                                                        <input name='questionID' type='hidden' value='$id'/>
+                                                                        <script type='text/javascript'>
+                                                                            CKEDITOR.config.customConfig = '$path';
+                                                                            CKEDITOR.replace('$idanswer');
+                                                                        </script>
+                                                                    </div>
+
+                                                                    <div class='uk-margin'>
+                                                                        <button class='uk-button uk-button-primary' name='submitAnswer' type='submit'>SUBMIT ANSWER</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div></div></div>";
+
+                                            $count++;
+                                            echo $data;
+                                        }
+                                        $entry_modals = $modal;
+                                    }
+                                ?>
                             </tbody>
                         </table>
                         </div>
@@ -55,6 +111,15 @@
     </div>
 </div>
 
+<?php   
+    echo $entry_modals;
+?>
+
+<script>
+    function modal_hide(modalid){
+        UIkit.modal(modalid).hide();
+    }
+</script>
 
 <?php
     web_footer();
