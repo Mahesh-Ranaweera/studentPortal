@@ -15,6 +15,8 @@
             'admin_quest' => '/studentPortal/_admin/stud_questions',
             'admin_regist' => '/studentPortal/_admin/stud_registeration',
             'signout' => '/studentPortal/_app/signout',
+            'user' => 'USER PORTAL',
+            'user_home' => '/studentPortal/portal',
             'passwdlen' => 8,
         ];
 

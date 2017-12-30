@@ -11,10 +11,10 @@
 
         if($conn->query($sql) === TRUE){
             echo 'UPDATED';
-            header('Location: ../_admin/stud_registeration?msg=added');
+            header('Location: ../_admin/stud_registeration');
         }else{
             echo 'UDPATE FAILED';
-            header('Location: ../_admin/stud_registeration?msg=error');
+            header('Location: ../_admin/stud_registeration');
         }
     }
 
@@ -26,10 +26,10 @@
 
         if($conn->query($sql) === TRUE){
             echo 'UPDATED';
-            header('Location: ../_admin/stud_registeration?msg=added');
+            header('Location: ../_admin/stud_registeration');
         }else{
             echo 'UDPATE FAILED';
-            header('Location: ../_admin/stud_registeration?msg=error');
+            header('Location: ../_admin/stud_registeration');
         }
     }
 

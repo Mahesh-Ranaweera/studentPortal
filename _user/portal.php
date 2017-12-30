@@ -12,7 +12,7 @@
             <div class='uk-card uk-card-default uk-card-body card-border-radius'>
                 <div class='uk-grid-match uk-grid-small uk-text-center' uk-grid>
                     <div class='uk-width-1-2@m'>
-                        <h4><?php echo config('admin'); ?></h4>
+                        <h4><?php echo config('user'); ?></h4>
                     </div>
                     <div class='uk-width-1-2@m'>
                         <ul class='uk-subnav uk-subnav-pill'>

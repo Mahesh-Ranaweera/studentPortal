@@ -32,9 +32,18 @@
                         <div class='uk-card-title'>Student Questions</div>
                         
                         <div class='uk-margin'>
-                            <div class='user_tab'>
-                                <p>Info</p>
-                            </div>
+                        <table class="uk-table uk-table-middle uk-table-divider">
+                            <thead>
+                                <tr>
+                                    <th class="uk-width-small">#</th>
+                                    <th>Question</th>
+                                    <th class="uk-width-small">Answer</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
                         </div>
 
                     </div>
