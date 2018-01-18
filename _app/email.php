@@ -2,7 +2,7 @@
     /**
      * Mail to admin about the registration
      */
-    function sendMail($strEmail, $strContent, $subject, $msgType){
+    function sendMail($strEmail, &$content, $msgType){
         $to=$strEmail;
         $subject = "";
 
@@ -11,20 +11,21 @@
         switch($msgType){
             case "student_signup":
                 $message .= "<h1>Student Registration/h1>";
-                $message .= "<p>Name: </p>";
-                $message .= "<p>Email: </p>";
-                $message .= "<p>School: </p>";
-                $message .= "<p>Field: </p>";
-                $message .= "<p>Contact: </p>";       
+                $message .= "<p>Name: ".$content['name']."</p>";
+                $message .= "<p>Email: ".$content['email']."</p>";
+                $message .= "<p>School: ".$content['school']."</p>";
+                $message .= "<p>Field: ".$content['field']."</p>";
+                $message .= "<p>Contact: ".$content['contact']."</p>";       
+                $message .= "<code>Student Password: ".$content['stud_passwd']."</code>";
                 $subject = "Student Registration"; 
                 break;
             case "career_signup":
                 $message .= "<h1>Career Application</h1>";
-                $message .= "<p>Name: </p>";
-                $message .= "<p>Email: </p>";
-                $message .= "<p>Education Qualification: </p>";
-                $message .= "<p>Professional Qualification: </p>";
-                $message .= "<p>Contact: </p>";   
+                $message .= "<p>Name: ".$content['name']."</p>";
+                $message .= "<p>Email: ".$content['email']."</p>";
+                $message .= "<p>Education Qualification: ".$content['edu_qual']."</p>";
+                $message .= "<p>Professional Qualification: ".$content['prof_qual']."</p>";
+                $message .= "<p>Contact: ".$content['contact']."</p>";   
                 $subject = "Career Application";
                 break;
             default:

@@ -2,6 +2,7 @@
     /**
      * DB query
      */
+    include 'email.php';
 
      //insert user to db
     if(isset($_POST['submitSignup'])){
@@ -13,10 +14,22 @@
         $district = $_POST['strDistrict'];
         $field = $_POST['strField'];
         $contact = $_POST['strContact'];
-        
+
         $code = codegen();
         $passwd = password_hash($code, PASSWORD_BCRYPT);
-        echo $code;
+        #echo $email.$code.$fname.$lname.$parent.$school.$district.$field.$contact;
+
+        //content array
+        $content = array(
+            "email" => $email,
+            "name" => $fname." ".$lname,
+            "school" => $school,
+            "field" => $field,
+            "contact" => $contact,
+            "edu_qual" => "",
+            "prof_qual" => "",
+            "stud_passwd" => $code,
+        );
 
         //query
         $sql = "INSERT INTO `users`(`email`, `fname`, `lname`, `parent`, `school`, `district`, `field`, `contact`, `passwd`) 
@@ -35,7 +48,7 @@
                 $notify['type'] = 'good';
                 $notify['msg'] = 'Successfully Registered';
                 /**Send signup notification */
-                mailAdmin(config('admin_email'), );
+                sendMail(config('admin_email'), $content, "student_signup");
             }else{
                 $notify['type'] = 'error';
                 $notify['msg'] = 'Something Went Wrong, Try Again';
@@ -147,7 +160,19 @@
         $phone = $_POST['strPhone'];
         $email = $_POST['strEmail'];
 
-        #echo $fname.$lname.$edu.$prof.$address.$phone.$email;
+        //content array
+        $content = array(
+            "email" => $email,
+            "name" => $fname." ".$lname,
+            "school" => "",
+            "field" => "",
+            "contact" => $phone,
+            "edu_qual" => $edu,
+            "prof_qual" => $prof,
+            "stud_passwd" => "",
+        );
+
+        #echo $fname.$lname.$edu.$prof.$address.$phone.$email.config('admin_email');
 
         //file
         $file = $_FILES['upload_file']['tmp_name'];
@@ -183,6 +208,8 @@
                 #echo 'DONE';
                 $notify['type'] = 'good';
                 $notify['msg'] = 'Successfully Submit Your Form';
+                /**Send career notification */
+                sendMail(config('admin_email'), $content, "career_signup");
             }else{
                 #echo 'FAILED';
                 $notify['type'] = 'error';
