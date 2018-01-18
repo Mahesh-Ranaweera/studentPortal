@@ -8,6 +8,5 @@
     include 'notifier.php';
     include 'query.php';
     include 'admin.php';
+    include 'email.php';
     include './_templates/template.php';
-
-    

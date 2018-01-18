@@ -19,6 +19,7 @@
             'user_home' => '/studentPortal/portal',
             'ckeditor' => '/studentPortal/_public/ckeditor',
             'passwdlen' => 8,
+            'admin_email' => '',
         ];
 
         return isset($config[$key]) ? $config[$key] : null;

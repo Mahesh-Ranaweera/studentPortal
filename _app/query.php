@@ -13,7 +13,7 @@
         $district = $_POST['strDistrict'];
         $field = $_POST['strField'];
         $contact = $_POST['strContact'];
-
+        
         $code = codegen();
         $passwd = password_hash($code, PASSWORD_BCRYPT);
         echo $code;
@@ -34,6 +34,8 @@
                 #echo "DONE";
                 $notify['type'] = 'good';
                 $notify['msg'] = 'Successfully Registered';
+                /**Send signup notification */
+                mailAdmin(config('admin_email'), );
             }else{
                 $notify['type'] = 'error';
                 $notify['msg'] = 'Something Went Wrong, Try Again';
