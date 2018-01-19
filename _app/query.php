@@ -253,6 +253,7 @@
 
                 if($conn->query($sql2) === TRUE){
                     //send email
+                    recoveryEmail($email, $reckey);
 
                     $notify['type'] = 'good';
                     $notify['msg'] = 'Check your email for recovery information';

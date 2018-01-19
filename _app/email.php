@@ -47,3 +47,26 @@
             return 0;
         }
     }
+
+    function recoveryEmail($strEmail, $recKey){
+        $to=$strEmail;
+        $subject = "Account Recovery"; 
+
+        $message = "<html><body>";
+        $message .= "<h1>Student Registration/h1>";
+        $message .= "<p>Here is your recovery key: ".$recKey."</p>";
+        $message .= "<p></p>";
+        $message .= "</body></html>";
+
+        $headers = "Content-Type: text/html; charset=ISO-8859-1\r\n";
+        $headers .= "From: StudentPortal <studentportal.com>\r\n";
+        $headers .= "Reply-To: StudentPortal: studentportal@mail.com";
+        $headers .= "MIME-Version: 1.0\r\n";
+        $headers .= "X-Mailer: PHP/" . phpversion();
+        
+        if(mail($to, $subject, $message, $headers)){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
