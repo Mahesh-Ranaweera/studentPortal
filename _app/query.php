@@ -14,6 +14,7 @@
         $district = $_POST['strDistrict'];
         $field = $_POST['strField'];
         $contact = $_POST['strContact'];
+        $reckey = recCode(); //get the recovery code
 
         $code = codegen();
         $passwd = password_hash($code, PASSWORD_BCRYPT);
@@ -32,8 +33,8 @@
         );
 
         //query
-        $sql = "INSERT INTO `users`(`email`, `fname`, `lname`, `parent`, `school`, `district`, `field`, `contact`, `passwd`) 
-                VALUES ('$email', '$fname', '$lname', '$parent', '$school', '$district', '$field', '$contact', '$passwd')";
+        $sql = "INSERT INTO `users`(`email`, `fname`, `lname`, `parent`, `school`, `district`, `field`, `contact`, `passwd`, `rec_key`) 
+                VALUES ('$email', '$fname', '$lname', '$parent', '$school', '$district', '$field', '$contact', '$passwd', '$reckey')";
 
         $checkdb = "SELECT `email` FROM `users` WHERE `email`='".$email."'";
         //check whether users is already registered
@@ -222,3 +223,46 @@
         }
         
      }
+
+
+    /**
+    * User account recovery for admin and students 
+    */
+
+    if(isset($_POST['btnRecover'])){
+        $email = $_POST['strEmail'];
+        
+        $sql = "SELECT `email`, `accepted` FROM `users` WHERE `email`='".$email."'";
+
+        $res = $conn->query($sql);
+        $row = mysqli_fetch_assoc($res);
+
+        if($res->num_rows<=0){
+            #echo "USER NOT FOUND";
+            $notify['type'] = 'error';
+            $notify['msg'] = 'User not found';
+        }else{
+
+            //check whether the account is accepted
+            if($row['accepted'] == TRUE){
+                //generate and upload new rec_code
+                $reckey = recCode();
+
+                //update the recovery key
+                $sql2 = "UPDATE `users` SET `rec_key`='".$reckey."' WHERE `email`='".$email."'";
+
+                if($conn->query($sql2) === TRUE){
+                    //send email
+
+                    $notify['type'] = 'good';
+                    $notify['msg'] = 'Check your email for recovery information';
+                }else{
+                    $notify['type'] = 'error';
+                    $notify['msg'] = 'Something Went Wrong, Try Again';
+                }
+            }else{
+                $notify['type'] = 'error';
+                $notify['msg'] = 'Account Not Accepted, Contact the Admin';
+            }
+        }
+    }

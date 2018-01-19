@@ -49,3 +49,15 @@
         $ranStr = $ranStr.time();
         return $ranStr;
     }
+
+    //generate recovery key
+    function recCode(){
+        $len = 6;
+        $char = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charLen = strlen($char);
+        $ranStr = '';
+        for ($i = 0; $i < $len; $i++) {
+            $ranStr .= $char[rand(0, $charLen - 1)];
+        }
+        return $ranStr;
+    }

@@ -36,7 +36,7 @@
                         <input class='uk-input' name='admin_password' type='password' placeholder='' required>
                     </div>
                     <div class='uk-width-1-1'>
-                        <a href='#'>Forgot my password</a>
+                        <a href='/studentPortal/recovery'>Forgot my password</a>
                     </div>
                     <div class='uk-margin'>
                         <p class='uk-text-right'>
@@ -63,7 +63,7 @@
                         <input class='uk-input' name='stud_password' type='password' placeholder='' required>
                     </div>
                     <div class='uk-width-1-1'>
-                        <a href='#'>Forgot my password</a>
+                        <a href='/studentPortal/recovery'>Forgot my password</a>
                     </div>
                     <div class='uk-margin'>
                         <p class='uk-text-right'>

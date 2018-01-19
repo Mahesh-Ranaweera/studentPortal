@@ -29,7 +29,8 @@
                     contact VARCHAR(100),
                     passwd VARCHAR(100),
                     accepted BOOLEAN DEFAULT FALSE,
-                    reg_date TIMESTAMP
+                    reg_date TIMESTAMP,
+                    rec_key VARCHAR(10)
                 );';
 
         $sql2 .= 'CREATE TABLE `admin`(
