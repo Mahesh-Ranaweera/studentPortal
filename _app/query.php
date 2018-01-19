@@ -267,3 +267,23 @@
             }
         }
     }
+
+    /**
+     * Change users password
+     */
+
+    if(isset($_POST['btnPasswordChange'])){
+        $email = $_POST['strEmail'];
+        $reckey = $_POST['recKey'];
+        $passw1 = $_POST['strPassw1'];
+        $passw2 = $_POST['strPassw2'];
+
+        //check if the passwords are valid
+        if(passw1 == passw2){
+            //check if the secKey is valid 
+
+            
+        }else{
+
+        }
+    }
