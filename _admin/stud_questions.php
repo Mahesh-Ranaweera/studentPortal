@@ -1,6 +1,7 @@
 <?php
     include '../_app/admin_end.php';
     web_header(config('site_header'));
+    $entry_modals = '';
 ?>
 
 <div class='uk-container'>

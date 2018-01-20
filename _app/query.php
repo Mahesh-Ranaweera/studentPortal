@@ -18,6 +18,8 @@
 
         $code = codegen();
         $passwd = password_hash($code, PASSWORD_BCRYPT);
+        
+        /*** Uncomment after testing */
         #echo $email.$code.$fname.$lname.$parent.$school.$district.$field.$contact;
 
         //content array
@@ -94,7 +96,7 @@
         }
      }
 
-     //Login into admin panel
+     //Login into student panel
     if(isset($_POST['btnStudLogin'])){
         $email = $_POST['stud_email'];
         $passw = $_POST['stud_password'];
@@ -274,16 +276,50 @@
 
     if(isset($_POST['btnPasswordChange'])){
         $email = $_POST['strEmail'];
-        $reckey = $_POST['recKey'];
+        $reckey = $_POST['strKey'];
         $passw1 = $_POST['strPassw1'];
         $passw2 = $_POST['strPassw2'];
+        $passwd = password_hash($passw1, PASSWORD_BCRYPT);
+
+        //check if the user exists
+        $sql = "SELECT `email`, `accepted`, `rec_key` FROM `users` WHERE `email`='".$email."'";
 
         //check if the passwords are valid
-        if(passw1 == passw2){
-            //check if the secKey is valid 
+        if($passw1 == $passw2){
+            //find the user
+            $res = $conn->query($sql);
+            $row = mysqli_fetch_assoc($res);
 
+            if($res->num_rows<=0){
+                #echo "USER NOT FOUND";
+                $notify['type'] = 'error';
+                $notify['msg'] = 'User not found';
+            }else{
+                //checK user is accepted and verify rec_key
+                if($row['accepted'] == TRUE){
+                    if($row['rec_key'] == $reckey && strlen($reckey) == 6){
+                        //update the password
+                        $sql2 = "UPDATE `users` SET `passwd`='".$passwd."' WHERE `email`='".$email."'";
+
+                        if($conn->query($sql2) === TRUE){
+                            $notify['type'] = 'good';
+                            $notify['msg'] = 'Password Changed Successfully';
+                        }else{
+                            $notify['type'] = 'error';
+                            $notify['msg'] = 'Something Went Wrong, Try Again';
+                        }
+                    }else{
+                        $notify['type'] = 'error';
+                        $notify['msg'] = 'Invalid Recovery Key, Try again';
+                    }
+                }else{
+                    $notify['type'] = 'error';
+                    $notify['msg'] = 'Account Not Accepted, Contact the Admin';
+                }
+            }
             
         }else{
-
+            $notify['type'] = 'error';
+            $notify['msg'] = 'Passwords Not Matched, Try Again';
         }
     }
