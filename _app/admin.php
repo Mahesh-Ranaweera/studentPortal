@@ -119,7 +119,7 @@
         $res = $conn->query($sql);
 
         if($res->num_rows<=0){
-            echo "DATA NOT FOUND";
+            #echo "DATA NOT FOUND";
         }else{
             while($row = mysqli_fetch_assoc($res)){
                 fputcsv($output, $row);

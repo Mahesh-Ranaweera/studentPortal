@@ -101,7 +101,7 @@
         $email = $_POST['stud_email'];
         $passw = $_POST['stud_password'];
 
-        $sql = "SELECT `email`, `passwd` FROM `users` WHERE `email`='".$email."'";
+        $sql = "SELECT `email`, `passwd`, `accepted` FROM `users` WHERE `email`='".$email."'";
 
         $res = $conn->query($sql);
         $row = mysqli_fetch_assoc($res);
@@ -111,25 +111,31 @@
             $notify['type'] = 'error';
             $notify['msg'] = 'User not found';
         }else{
-            if(password_verify($passw ,$row['passwd'])){
-                session_start();
+            //check if account is verified
+            if($row['accepted'] == TRUE){
+                if(password_verify($passw ,$row['passwd'])){
+                    session_start();
 
-                $user_data = array(
-                    'email' => $row['email'],
-                    'name' => $row['fname'].' '.$row['lname'],
-                    'parent' => $row['parent'],
-                    'school' => $row['school'],
-                    'district' => $row['district'],
-                    'field' => $row['field'],
-                    'contact' => $row['contact'],
-                );
+                    $user_data = array(
+                        'email' => $row['email'],
+                        'name' => $row['fname'].' '.$row['lname'],
+                        'parent' => $row['parent'],
+                        'school' => $row['school'],
+                        'district' => $row['district'],
+                        'field' => $row['field'],
+                        'contact' => $row['contact'],
+                    );
 
-                $_SESSION['udata'] = $user_data;
-                
-                header('Location: ./_user/portal');
+                    $_SESSION['udata'] = $user_data;
+                    
+                    header('Location: ./_user/portal');
+                }else{
+                    $notify['type'] = 'error';
+                    $notify['msg'] = 'Enter correct password';
+                }
             }else{
                 $notify['type'] = 'error';
-                $notify['msg'] = 'Enter correct password';
+                $notify['msg'] = 'Account Not Accepted, Contact the Admin';
             }
         }
      }
