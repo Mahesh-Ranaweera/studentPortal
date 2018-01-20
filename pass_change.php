@@ -29,7 +29,7 @@
 
                     <div class="uk-margin">
                         <div class="uk-text-right">
-                            <button class="uk-button uk-button-primary" name="btnRecover" type="submit">Recover</button>
+                            <button class="uk-button uk-button-primary" name="btnPasswordChange" type="submit">Recover</button>
                             <a href="/">
                                 <button class="uk-button uk-button-default" type="button">HOME</button>
                             </a>
