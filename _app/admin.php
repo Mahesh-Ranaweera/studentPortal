@@ -127,8 +127,8 @@
 
             fseek($output, 0);
 
-            header('Content-Type: text/csv; charset=utf-8');
-            header('Content-Disposition: attachment; filename=student_reg.csv;');
+            header("Content-Type: text/csv; charset=utf-8");
+            header("Content-Disposition: attachment; filename=student_reg_".date('Ymd').".csv");
 
             fpassthru($output);
             exit;
