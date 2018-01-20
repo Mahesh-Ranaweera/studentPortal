@@ -32,6 +32,15 @@
                 <div class='uk-grid-match uk-grid-small' uk-grid>
                     <div class='uk-width-expand@m'>
                         <div class='uk-card-title'>Student Registration</div>
+
+                        <div class='uk-margin'>
+                            <form method='POST' action=''>
+                                <button class='uk-button uk-button-default' type='submit' name='reqCSV'>
+                                    <span uk-icon='icon: cloud-download'></span>
+                                    <span>Download Data</span>
+                                </button>
+                            </form>
+                        </div>
                         
                         <div class='uk-margin'>
                         <table class="uk-table uk-table-middle uk-table-divider">

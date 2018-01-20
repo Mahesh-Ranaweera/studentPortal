@@ -106,3 +106,31 @@
             header('Location: ../_admin/stud_questions');
         }
     }
+
+    //export csv data
+    if(isset($_POST['reqCSV'])){
+
+        //create the output file
+        $output = fopen('php://memory', 'w');
+        fputcsv($output, array('Email', 'First Name', 'Last Name', 'Parent', 'School', 'District', 'Field', 'Contact', 'Registration Date'));
+
+        $sql = "SELECT `email`, `fname`, `lname`, `parent`, `school`, `district`, `field`, `contact`, `reg_date` FROM `users`";
+
+        $res = $conn->query($sql);
+
+        if($res->num_rows<=0){
+            echo "DATA NOT FOUND";
+        }else{
+            while($row = mysqli_fetch_assoc($res)){
+                fputcsv($output, $row);
+            }
+
+            fseek($output, 0);
+
+            header('Content-Type: text/csv; charset=utf-8');
+            header('Content-Disposition: attachment; filename=student_reg.csv;');
+
+            fpassthru($output);
+            exit;
+        }
+    }

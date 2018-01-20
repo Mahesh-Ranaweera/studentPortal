@@ -33,9 +33,9 @@
                     <div class='uk-width-expand@m'>
                         <div class='uk-card-title'>Admin Settings</div>
                         
+                        <!--
                         <div class='uk-margin'>
                             <label for=''>Upload ADs:</label>
-                            <!--ad 1 upload--> 
                             <div class='uk-width-1-1'>
                                 <div class='js-upload uk-placeholder uk-width-1-1'>
                                     <div uk-form-custom>
@@ -48,7 +48,6 @@
                             </div>
 
 
-                            <!--ad 2 upload--> 
                             <div class='uk-width-1-1'>
                                 <div class='js-upload uk-placeholder uk-width-1-1'>
                                     <div uk-form-custom>
@@ -60,6 +59,7 @@
                                 <progress id='js-progressbar' class='uk-progress' value='0' max='100' hidden></progress>
                             </div>
                         </div>
+                        -->
                         
                     </div>
                 </div>
