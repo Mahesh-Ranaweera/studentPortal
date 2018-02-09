@@ -39,7 +39,14 @@
                 <div class='uk-grid-match uk-grid-small' uk-grid>
                     <div class='uk-width-expand@m' uk-grid>
                         <div class='uk-width-1-1'>
-                            PHOTO
+                            <!--image slideshow-->
+                             <ul id='slideshow'>
+                                <img src='./_public/assets/img1.jpeg' id='img1' style='display: none; border-radius:2.5px;' width="" height="" alt="">
+                                <img src='./_public/assets/img2.jpeg' id='img2' style='display: none; border-radius:2.5px;' width="" height="" alt="">
+                                <img src='./_public/assets/img3.jpeg' id='img3' style='display: none; border-radius:2.5px;' width="" height="" alt="">
+                                <img src='./_public/assets/img4.jpeg' id='img4' style='display: none; border-radius:2.5px;' width="" height="" alt="">
+                            </ul>
+
                         </div>
                         <div class='uk-width-1-1'>
                             <p class='web-description-txt'><b>When studying your Advanced levels you have to face lot of problems when 
@@ -49,16 +56,19 @@
                             contact with us even Sinhala also.</b></p>
                         </div>
                     </div>
+
+                    <!--
                     <div class='uk-width-1-3@m'>
                         AD
-                    </div>
+                    </div>-->
                 </div>
 
+                <!--
                 <div class='uk-grid-match uk-grid-small uk-text-center' uk-grid>
                     <div class='uk-width-expand@m'>
                         AD
                     </div>
-                </div>
+                </div>-->
             </div>
         </div>
 
@@ -73,6 +83,53 @@
     function failed(msg){
         UIkit.notification({message: msg, status: 'warning'})
     }
+
+    imgIDarr = [];
+    //slideshow
+    function imageCollection(){
+        var parent = document.getElementById('slideshow');
+        //console.log(parent);
+
+        var childEle, imgID;
+
+        for(var i = 0; i < parent.childNodes.length; i++){
+            childEle = parent.childNodes[i];
+            if(childEle.nodeName == 'IMG'){
+                imgID = childEle.id;
+                imgIDarr.push(imgID);
+                //console.log(imgIDarr);
+            } 
+        }
+    }
+
+    function imgReset(){
+        for(var i = 0; i < imgIDarr.length; i++){
+            document.getElementById(imgIDarr[i]).style.display = 'none';
+        }
+    }
+
+    //start the slideshow
+    function slideshow(){
+        imageCollection();
+
+        //display first image
+        document.getElementById(imgIDarr[0]).style.display = 'block';
+
+        var j =0;
+
+        setInterval(() => {
+            //reset j if overflow
+            if(imgIDarr.length == j){
+                j = 0;
+            }
+            //console.log(j);
+            imgReset();
+            document.getElementById(imgIDarr[j]).style.display = 'block';
+            j++;
+        }, 3000);
+    }
+
+    slideshow();
 </script>
 
 <?php
