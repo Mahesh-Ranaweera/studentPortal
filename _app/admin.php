@@ -33,6 +33,21 @@
         }
     }
 
+    //delete the student 
+    if(isset($_POST['btnStudDelete'])){
+        $email = $_POST['stud_email'];
+
+        $sql = "DELETE FROM `users` WHERE `email`='".$email."'";
+
+        if($conn->query($sql) === TRUE){
+            echo 'DELETE';
+            header('Location: ../_admin/stud_registeration');
+        }else{
+            echo 'DELETE FAILED';
+            header('Location: ../_admin/stud_registeration');
+        }
+    }
+
     //deliver the requested cv file
     if(isset($_POST['btnCareerFile'])){
         $email = $_POST['email'];

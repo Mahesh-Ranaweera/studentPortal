@@ -49,6 +49,7 @@
                                     <th class="uk-width-small">#</th>
                                     <th>Student Name</th>
                                     <th class="uk-width-small">Accept</th>
+                                    <th class="uk-width-small">Remove</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -94,6 +95,15 @@
                                                         </form>";
                                             }
                             
+                                            $data .= "</td><td>";
+
+                                            if($row['accepted'] == FALSE){
+                                                $data .="<form method='POST' action=''>
+                                                            <input type='hidden' name='stud_email' value='$email' />
+                                                            <button class='uk-button uk-button-default' name='btnStudDelete' type='submit'><span uk-icon='icon: trash'></span></button>
+                                                        </form>";
+                                            }
+
                                             $data .= "</td></tr>";
                             
                                             #Modal
@@ -120,7 +130,7 @@
                             </tbody>
                             </table>
                         </div>
-
+                        <p>* To delete students you need to [Deny] access to the portal</p>
                     </div>
                 </div>
 
