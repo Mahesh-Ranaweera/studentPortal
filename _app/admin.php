@@ -1,6 +1,8 @@
 <?php
     /**
      * Admin query
+     * Allowed to accept, deny, and delete
+     * Download csv file
      */
 
     //update status of the student
