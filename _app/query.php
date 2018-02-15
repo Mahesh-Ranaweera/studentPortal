@@ -3,6 +3,7 @@
      * DB query
      */
     include 'email.php';
+    include 'encryption.php';
 
      //insert user to db
     if(isset($_POST['submitSignup'])){
@@ -17,10 +18,11 @@
         $reckey = recCode(); //get the recovery code
 
         $code = codegen();
+        $adminauth = encrypt_decrypt('ENC', $code);
         $passwd = password_hash($code, PASSWORD_BCRYPT);
         
         /*** Uncomment after testing */
-        #echo $email.$code.$fname.$lname.$parent.$school.$district.$field.$contact;
+        //echo $email.$code.$fname.$lname.$parent.$school.$district.$field.$contact.$adminauth;
 
         //content array
         $content = array(
@@ -35,8 +37,8 @@
         );
 
         //query
-        $sql = "INSERT INTO `users`(`email`, `fname`, `lname`, `parent`, `school`, `district`, `field`, `contact`, `passwd`, `rec_key`) 
-                VALUES ('$email', '$fname', '$lname', '$parent', '$school', '$district', '$field', '$contact', '$passwd', '$reckey')";
+        $sql = "INSERT INTO `users`(`email`, `fname`, `lname`, `parent`, `school`, `district`, `field`, `contact`, `passwd`, `adminauth`, `rec_key`) 
+                VALUES ('$email', '$fname', '$lname', '$parent', '$school', '$district', '$field', '$contact', '$passwd', '$adminauth', '$reckey')";
 
         $checkdb = "SELECT `email` FROM `users` WHERE `email`='".$email."'";
         //check whether users is already registered

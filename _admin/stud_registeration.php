@@ -73,6 +73,7 @@
                                             $field = $row['field'];
                                             $contact = $row['contact'];
                                             $date = $row['reg_date'];
+                                            $code = encrypt_decrypt('DEC', $row['adminauth']);
                             
                                             #idname
                                             $idname = "modal".$count;
@@ -117,6 +118,7 @@
                                                                 <p>Field: $field</p>
                                                                 <p>Contact: $contact</p>
                                                                 <p>Register Date: $date</p>
+                                                                <p>Passcode: <code>$code</code></p>
                                                         </div></div>";
                                             
                                             $count++;

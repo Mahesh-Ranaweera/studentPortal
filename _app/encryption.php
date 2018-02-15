@@ -4,7 +4,6 @@
      * @param string $method: define encryption and decryption
      * @param string $content: parse the string to be encrypted or decrypted
      */
-    require 'config.php'
 
     function encrypt_decrypt($method, $content){
         $out_string = null;

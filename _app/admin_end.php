@@ -7,6 +7,7 @@
     include '../_app/db.php';
     include '../_app/admin.php';
     include '../_templates/template.php';
+    include '../_app/encryption.php';
 
     if(!$_SESSION){
         printf("<script>location.href='../index'</script>");
