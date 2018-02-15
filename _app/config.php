@@ -20,6 +20,8 @@
             'ckeditor' => '/studentPortal/_public/ckeditor',
             'passwdlen' => 8,
             'admin_email' => 'testadmin@gmail.com',
+            'app_KEY' => 'c947370ae60acd65f6d073cb3dc84d4c',
+            'app_IV' => '22553355'
         ];
 
         return isset($config[$key]) ? $config[$key] : null;

@@ -28,6 +28,7 @@
                     field VARCHAR(100),
                     contact VARCHAR(100),
                     passwd VARCHAR(100),
+                    adminauth VARCHAR(100),
                     accepted BOOLEAN DEFAULT FALSE,
                     reg_date TIMESTAMP,
                     rec_key VARCHAR(10)
